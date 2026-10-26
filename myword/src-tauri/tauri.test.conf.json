@@ -1,0 +1,9 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "MyWord (Test)",
+  "mainBinaryName": "MyWord-Test",
+  "identifier": "app.myword.test",
+  "build": { "beforeBuildCommand": "" },
+  "app": { "windows": [{ "label": "main", "title": "MyWord (Test)", "width": 1440, "height": 900, "minWidth": 900, "minHeight": 600, "center": true, "dragDropEnabled": false, "zoomHotkeysEnabled": false }] },
+  "bundle": { "active": false, "fileAssociations": [] }
+}

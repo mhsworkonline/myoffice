@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "MyWord",
+  "version": "0.1.0",
+  "identifier": "app.myword.desktop",
+  "build": {
+    "frontendDist": "../out",
+    "devUrl": "http://localhost:3200",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "main",
+        "title": "MyWord",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 900,
+        "minHeight": 600,
+        "center": true,
+        "dragDropEnabled": false,
+        "zoomHotkeysEnabled": false
+      }
+    ],
+    "security": {
+      "csp": {
+        "default-src": "'self'",
+        "script-src": "'self'",
+        "style-src": "'self' 'unsafe-inline'",
+        "img-src": "'self' data: blob:",
+        "font-src": "'self'",
+        "connect-src": "'self' ipc: http://ipc.localhost",
+        "object-src": "'none'",
+        "base-uri": "'none'",
+        "form-action": "'none'",
+        "frame-src": "'none'",
+        "worker-src": "'none'",
+        "media-src": "'none'",
+        "manifest-src": "'none'"
+      },
+      "devCsp": null,
+      "freezePrototype": false
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi"],
+    "publisher": "MyWord",
+    "shortDescription": "Local-first word processor",
+    "longDescription": "MyWord is a local-first word processor. Files are stored only on this computer.",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.ico", "icons/icon.png"],
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper" }
+    },
+    "fileAssociations": [
+      { "ext": ["docx"], "name": "MyWord.Document", "description": "Word Document", "role": "Editor", "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },
+      { "ext": ["docm"], "name": "MyWord.DocumentMacro", "description": "Word Macro-Enabled Document", "role": "Editor", "mimeType": "application/vnd.ms-word.document.macroEnabled.12" },
+      { "ext": ["dotx"], "name": "MyWord.Template", "description": "Word Template", "role": "Editor", "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.template" },
+      { "ext": ["doc", "dot"], "name": "MyWord.Document97", "description": "Word 97-2003 Document", "role": "Viewer", "mimeType": "application/msword" },
+      { "ext": ["rtf"], "name": "MyWord.RTF", "description": "Rich Text Format", "role": "Editor", "mimeType": "application/rtf" },
+      { "ext": ["odt"], "name": "MyWord.ODT", "description": "OpenDocument Text", "role": "Viewer", "mimeType": "application/vnd.oasis.opendocument.text" }
+    ]
+  }
+}

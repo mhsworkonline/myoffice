@@ -1,0 +1,610 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --chrome-bg: #f3f3f3;
+  --title-bg: #f3f3f3;
+  --ribbon-bg: #ffffff;
+  --panel: #ffffff;
+  --text: #242424;
+  --muted: #616161;
+  --accent: #185abd;
+  --accent-hover: #124a9c;
+  --accent-soft: #e5eefb;
+  --brand: #185abd;
+  --border: #e0e0e0;
+  --border-strong: #c8c8c8;
+  --hover: #ebebeb;
+  --pressed: #e0e0e0;
+  --checked: #e1e1e1;
+  --checked-border: #bdbdbd;
+  --input-bg: #ffffff;
+  --canvas: #e6e6e6;
+  --page-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.18);
+  --ruler-bg: #ffffff;
+  --ruler-margin: #d6d6d6;
+  --ruler-text: #555555;
+  --tooltip-bg: #ffffff;
+  --menu-bg: #ffffff;
+  --menu-hover: #f0f0f0;
+  --scroll-track: #f3f3f3;
+  --scroll-thumb: #c2c2c2;
+  --scroll-thumb-hover: #a6a6a6;
+  --tab-active-bg: #ffffff;
+  --dialog-bg: #ffffff;
+  --dialog-title: #ffffff;
+  --gallery-bg: #ffffff;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.14), 0 0 1px rgba(0, 0, 0, 0.2);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --chrome-bg: #1f1f1f;
+  --title-bg: #1f1f1f;
+  --ribbon-bg: #292929;
+  --panel: #292929;
+  --text: #f0f0f0;
+  --muted: #b3b3b3;
+  --accent: #6aa3f8;
+  --accent-hover: #86b5fa;
+  --accent-soft: #1d3150;
+  --brand: #185abd;
+  --border: #3d3d3d;
+  --border-strong: #5a5a5a;
+  --hover: #3a3a3a;
+  --pressed: #454545;
+  --checked: #474747;
+  --checked-border: #6a6a6a;
+  --input-bg: #1f1f1f;
+  --canvas: #141414;
+  --page-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 1px 4px rgba(0, 0, 0, 0.6);
+  --ruler-bg: #2b2b2b;
+  --ruler-margin: #1f1f1f;
+  --ruler-text: #c8c8c8;
+  --tooltip-bg: #2b2b2b;
+  --menu-bg: #2b2b2b;
+  --menu-hover: #3d3d3d;
+  --scroll-track: #1f1f1f;
+  --scroll-thumb: #5a5a5a;
+  --scroll-thumb-hover: #7a7a7a;
+  --tab-active-bg: #292929;
+  --dialog-bg: #2b2b2b;
+  --dialog-title: #2b2b2b;
+  --gallery-bg: #ffffff;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--chrome-bg);
+  color: var(--text);
+  font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------- ribbon ---------- */
+.mw-tab {
+  position: relative;
+  height: 30px;
+  padding: 0 9px;
+  font-size: 13px;
+  color: var(--text);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.mw-tab:hover {
+  background: var(--hover);
+}
+.mw-tab-active {
+  color: var(--accent);
+  font-weight: 600;
+}
+.mw-tab-active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2px;
+  width: calc(100% - 18px);
+  max-width: 44px;
+  min-width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.mw-ribbon {
+  background: var(--ribbon-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+.mw-group {
+  display: flex;
+  flex-direction: column;
+  padding: 3px 6px 0 6px;
+  position: relative;
+}
+.mw-group + .mw-group::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--border);
+}
+.mw-group-label {
+  height: 18px;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 16px;
+  white-space: nowrap;
+}
+.mw-launcher {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  color: var(--muted);
+}
+.mw-launcher:hover {
+  background: var(--hover);
+}
+.mw-btn-lg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 42px;
+  height: 70px;
+  padding: 3px 3px 1px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+}
+.mw-btn-lg:hover,
+.mw-btn-sm:hover,
+.mw-split:hover {
+  background: var(--hover);
+}
+.mw-btn-sm {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 3px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.mw-btn-checked {
+  background: var(--checked) !important;
+  border-color: var(--checked-border);
+}
+.mw-split {
+  display: flex;
+  align-items: stretch;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+.mw-split > button {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+.mw-split > button:hover {
+  background: var(--pressed);
+}
+.mw-combo {
+  height: 22px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  background: var(--input-bg);
+  display: flex;
+  align-items: center;
+}
+.mw-combo input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 4px;
+  min-width: 0;
+  flex: 1;
+  font-size: 12px;
+}
+.mw-combo:hover {
+  border-color: var(--muted);
+}
+.mw-combo:focus-within {
+  border-color: var(--accent);
+}
+
+/* ---------- menus & popups ---------- */
+.mw-menu {
+  background: var(--menu-bg);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 12px;
+}
+.mw-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 12px 0 4px;
+  margin: 0 4px;
+  border-radius: 4px;
+  cursor: default;
+}
+.mw-menu-item:hover,
+.mw-menu-item-open {
+  background: var(--menu-hover);
+}
+.mw-menu-icon {
+  width: 24px;
+  display: inline-flex;
+  justify-content: center;
+  color: var(--muted);
+}
+.mw-menu-sep {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+.mw-menu-header {
+  font-weight: 600;
+  padding: 4px 10px;
+  background: var(--chrome-bg);
+  font-size: 12px;
+}
+.mw-popup {
+  background: var(--menu-bg);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+.mw-item-active {
+  background: var(--accent-soft);
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+}
+
+/* ---------- buttons & inputs ---------- */
+.mw-btn {
+  min-width: 72px;
+  height: 26px;
+  padding: 0 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  background: var(--panel);
+  font-size: 12px;
+}
+.mw-btn:hover {
+  background: var(--hover);
+}
+.mw-btn:disabled {
+  opacity: 0.5;
+}
+.mw-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.mw-btn-primary:hover {
+  background: var(--accent-hover);
+}
+.mw-input {
+  height: 24px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  padding: 0 6px;
+  background: var(--input-bg);
+  outline: none;
+  font-size: 12px;
+}
+.mw-input:focus {
+  border-color: var(--accent);
+  box-shadow: inset 0 -1px 0 var(--accent);
+}
+select.mw-input {
+  padding: 0 2px;
+}
+.mw-fieldset {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px 10px;
+  margin: 0;
+}
+.mw-fieldset > legend {
+  padding: 0 4px;
+  color: var(--muted);
+}
+.mw-list {
+  border: 1px solid var(--border-strong);
+  background: var(--input-bg);
+  overflow: auto;
+}
+.mw-list > div {
+  padding: 1px 6px;
+  cursor: default;
+  white-space: nowrap;
+}
+.mw-list > div:hover {
+  background: var(--menu-hover);
+}
+.mw-list > .mw-list-sel {
+  background: var(--accent-soft);
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+}
+
+/* ---------- dialog ---------- */
+.mw-dialog {
+  background: var(--dialog-bg);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 12px;
+}
+.mw-dialog-title {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px 0 14px;
+  font-size: 13px;
+  cursor: move;
+  user-select: none;
+}
+.mw-dtab {
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+}
+.mw-dtab-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- scrollbars & tabs ---------- */
+.mw-scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  background: var(--scroll-track);
+}
+.mw-scroll-btn:hover {
+  background: var(--hover);
+}
+.mw-vscroll,
+.mw-hscroll {
+  background: var(--scroll-track);
+}
+.mw-vscroll {
+  border-left: 1px solid var(--border);
+}
+.mw-scroll-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 6px;
+}
+.mw-scroll-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+.mw-sheet-tab {
+  position: relative;
+  height: 100%;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+  border-right: 1px solid transparent;
+  cursor: default;
+}
+.mw-sheet-tab:hover {
+  background: var(--hover);
+}
+.mw-sheet-tab-active {
+  background: var(--tab-active-bg);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+.mw-sheet-tab-active::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 2px 2px 0 0;
+  background: var(--accent);
+}
+
+.mw-color-cell {
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+.mw-color-cell:hover {
+  outline: 1px solid #f29436;
+  outline-offset: 0;
+  border-color: #fff;
+}
+
+.mw-gallery-item:hover {
+  outline: 2px solid var(--accent);
+}
+
+.mw-status-btn {
+  width: 26px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  color: var(--muted);
+}
+.mw-status-btn:hover {
+  background: var(--hover);
+}
+.mw-status-btn-active {
+  background: var(--checked);
+  color: var(--text);
+}
+
+/* ---------- document canvas ---------- */
+.mw-canvas {
+  background: var(--canvas);
+}
+.mw-canvas::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+.mw-canvas::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border: 4px solid var(--canvas);
+  border-radius: 8px;
+}
+.mw-canvas::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+.mw-canvas::-webkit-scrollbar-track {
+  background: var(--canvas);
+}
+.mw-page {
+  box-shadow: var(--page-shadow);
+  overflow: hidden;
+  user-select: none;
+}
+.mw-page text {
+  font-kerning: normal;
+}
+.mw-caret {
+  animation: mw-blink 1.06s steps(1) infinite;
+}
+@keyframes mw-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------- ruler ---------- */
+.mw-ruler {
+  background: var(--canvas);
+  user-select: none;
+}
+
+/* ---------- styles gallery ---------- */
+.mw-style-tile {
+  width: 98px;
+  height: 64px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: var(--gallery-bg);
+  color: #000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 6px 3px;
+  text-align: left;
+}
+.mw-style-tile:hover {
+  border-color: var(--border-strong);
+  background: #f5f5f5;
+}
+.mw-style-tile-active {
+  border-color: var(--accent) !important;
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.mw-style-tile .mw-style-name {
+  font: 11px 'Segoe UI', sans-serif;
+  color: #444;
+}
+
+/* ---------- panes ---------- */
+.mw-pane {
+  background: var(--panel);
+  border-color: var(--border);
+}
+.mw-nav-item {
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: default;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mw-nav-item:hover {
+  background: var(--hover);
+}
+.mw-nav-item-active {
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+@media print {
+  html,
+  body {
+    overflow: visible !important;
+    height: auto !important;
+    background: #fff !important;
+  }
+  body > *:not(#print-root) {
+    display: none !important;
+  }
+  #print-root {
+    position: static !important;
+    left: auto !important;
+  }
+}
+
+/* the ribbon scrolls sideways on narrow windows without showing a scrollbar */
+.mw-ribbon {
+  scrollbar-width: none;
+}
+.mw-ribbon::-webkit-scrollbar {
+  display: none;
+}
+.mw-sb-item:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,12 @@
+# Each app has its own .gitignore for build output; this covers the repo root.
+
+# OS and editor clutter
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.log
+
+# local-only Claude Code settings
+.claude/settings.local.json
