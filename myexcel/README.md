@@ -25,6 +25,7 @@ npx playwright install chromium   # only for the end-to-end smoke test
 | `npm run tauri:build` | Release desktop build + installers in `src-tauri/target/release/bundle/` (`nsis/*.exe`, `msi/*.msi`) |
 | `npm run testbuild:app` | Test app "MyExcel (Test)" in `builds/test/MyExcel Test/` (only needed once, or after Rust changes) |
 | `npm run testbuild:ui -- "note"` | Rebuild the UI into the test app; then Help > Reload in the app |
+| `npm run deploy -- "message"` | Commit and push the whole myoffice repo (runs `../deploy.js`) |
 
 One-off checks (not part of the test suite): `node scripts/scroll-check.mjs` (200k-row scroll performance, needs `npm start`) and `node scripts/desktop-check.mjs` (drives the packaged desktop app over WebView2 remote debugging).
 

@@ -17,6 +17,7 @@ A Microsoft Word clone (look, feel and behaviour) for the web and Windows deskto
 | Desktop test app (first time / Rust changes) | `node scripts/testbuild.mjs app "note"` → `builds/test/MyWord Test/MyWord-Test.exe` |
 | Desktop test UI update (no Rust rebuild) | `node scripts/testbuild.mjs ui "note"`, then Help > Reload in the test app |
 | Release installers (NSIS + MSI) | `npm run tauri:build` → `src-tauri/target/release/bundle/` |
+| Commit and push the whole myoffice repo | `npm run deploy -- "message"` (runs `../deploy.js`) |
 
 ## Architecture (`src/`)
 - **`model/`:** the document model.
