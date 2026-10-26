@@ -1,0 +1,50 @@
+{
+  "name": "myexcel",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev -p 3100",
+    "build": "cross-env NEXT_TELEMETRY_DISABLED=1 next build",
+    "start": "node scripts/serve-static.mjs 3100",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "testbuild:app": "node scripts/testbuild.mjs app",
+    "testbuild:ui": "node scripts/testbuild.mjs ui",
+    "deploy": "node deploy.js"
+  },
+  "dependencies": {
+    "@fontsource/carlito": "^5.3.0",
+    "@tauri-apps/api": "^2.12.0",
+    "@tauri-apps/plugin-dialog": "^2.8.0",
+    "@tauri-apps/plugin-fs": "^2.6.0",
+    "exceljs": "^4.4.0",
+    "hyperformula": "^3.4.0",
+    "jspdf": "^4.2.1",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.48.0",
+    "next": "^15.5.26",
+    "papaparse": "^5.7.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tauri-apps/cli": "^2.12.0",
+    "@types/node": "^26.6.3",
+    "@types/papaparse": "^5.5.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.6.1",
+    "cross-env": "^10.1.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.2"
+  }
+}
